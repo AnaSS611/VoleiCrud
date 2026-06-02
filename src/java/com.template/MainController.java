@@ -11,17 +11,18 @@ import java.util.ArrayList;
 import javafx.event.ActionEvent;
 
 public class MainController {
-    //Caixas de Texto
+    //Texto
     @FXML private TextField txtId;
     @FXML private TextField txtNome;
     @FXML private TextField txtIdade;
     @FXML private TextField txtPosicao;
     @FXML private TextField txtTime;
-    //Botões
+    //Btns
     @FXML private Button btnSalvar;
     @FXML private Button btnEditar;
     @FXML private Button btnExcluir;
-    //Tabela e Colunas
+    @FXML private Button btnLimpar;
+    //Tabela-Colunas
     @FXML private TableView<JogadorDTO> tblVolei;
     @FXML private TableColumn<JogadorDTO, Integer> colId;
     @FXML private TableColumn<JogadorDTO, String> colNome;
@@ -47,7 +48,20 @@ public class MainController {
         //Inserir os dados vindos do bd na tblVolei
         tblVolei.setItems(FXCollections.observableArrayList(listaJogadores));
     }
+    @FXML
+    private void carregarCampos() {
+        // Pega o jogador que foi selecionado na tabela
+        JogadorDTO objJogadorDTO = tblVolei.getSelectionModel().getSelectedItem();
 
+        // Se tiver linha selecionada - preenche
+        if (objJogadorDTO != null) {
+            txtId.setText(String.valueOf(objJogadorDTO.getId()));
+            txtNome.setText(objJogadorDTO.getNome());
+            txtIdade.setText(String.valueOf(objJogadorDTO.getIdade()));
+            txtPosicao.setText(objJogadorDTO.getPosicao());
+            txtTime.setText(objJogadorDTO.getTime());
+        }
+    }
     @FXML
     private void btnSalvarAction(ActionEvent event) {
         //Pega os textos
@@ -55,15 +69,16 @@ public class MainController {
         int idade = Integer.parseInt(txtIdade.getText());
         String posicao = txtPosicao.getText();
         String time = txtTime.getText();
-        //Instancia o seu DTO e guarda os dados
-        JogadorDTO objjogadordto = new JogadorDTO();
-        objjogadordto.setNome(nome);
-        objjogadordto.setIdade(idade);
-        objjogadordto.setPosicao(posicao);
-        objjogadordto.setTime(time);
-        //Instancia o seu DAO e chama o metodo de inserir
-        JogadorDAO objjogadordao = new JogadorDAO();
-        objjogadordao.insertPlayer(objjogadordto);
+        //Instancia DTO
+        JogadorDTO objJogadorDTO = new JogadorDTO();
+        objJogadorDTO.setNome(nome);
+        objJogadorDTO.setIdade(idade);
+        objJogadorDTO.setPosicao(posicao);
+        objJogadorDTO.setTime(time);
+        //Instancia DAO, chama o metodoinserir
+        JogadorDAO objJogadorDAO = new JogadorDAO();
+        objJogadorDAO.insertPlayer(objJogadorDTO);
+
         //Recarrega a tabela p/ o jogador novo aparecer na hora
         carregarJogadores();
     }
@@ -76,26 +91,35 @@ public class MainController {
         String posicao = txtPosicao.getText();
         String time = txtTime.getText();
 
-        JogadorDTO joga = new JogadorDTO();
-        joga.setId(id);
-        joga.setNome(nome);
-        joga.setIdade(idade);
-        joga.setPosicao(posicao);
-        joga.setTime(time);
+        JogadorDTO objJogadorDTO = new JogadorDTO();
+        objJogadorDTO.setId(id);
+        objJogadorDTO.setNome(nome);
+        objJogadorDTO.setIdade(idade);
+        objJogadorDTO.setPosicao(posicao);
+        objJogadorDTO.setTime(time);
 
         JogadorDAO objJogadorDAO = new JogadorDAO();
-        objJogadorDAO.updatePlayer(joga);
+        objJogadorDAO.updatePlayer(objJogadorDTO);
 
         carregarJogadores();
     }
-
+    @FXML
+    private void btnLimparAction(ActionEvent event) {
+        txtId.clear();
+        txtNome.clear();
+        txtIdade.clear();
+        txtPosicao.clear();
+        txtTime.clear();
+    }
     @FXML
     private void btnExcluirAction(ActionEvent event) {
         int id = Integer.parseInt(txtId.getText());
+
         JogadorDAO objJogadorDAO = new JogadorDAO();
         objJogadorDAO.deletePlayer(id);
 
         carregarJogadores();
     }
+
 
 }
