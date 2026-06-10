@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 /* Classe responsável pelas operações CRUD na tabela de jogadores */
 public class JogadorDAO {
-
+    //registra mensagens no console
     private static final Logger logger = Logger.getLogger(JogadorDAO.class.getName());
 
     ArrayList<JogadorDTO> listaJogadores = new ArrayList<>();
@@ -33,6 +33,7 @@ public class JogadorDAO {
             }
 
         } catch (SQLException e) {
+            //mostra o que quebrou
             logger.log(Level.SEVERE, "Erro ao listar jogadores", e);
         }
 

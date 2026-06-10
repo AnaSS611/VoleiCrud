@@ -22,6 +22,7 @@ public class MainController {
     @FXML private Button btnEditar;
     @FXML private Button btnExcluir;
     @FXML private Button btnLimpar;
+    //@FXML acessar componentes
     //Tabela-Colunas
     @FXML private TableView<JogadorDTO> tblVolei;
     @FXML private TableColumn<JogadorDTO, Integer> colId;
@@ -32,7 +33,6 @@ public class MainController {
 
     @FXML
     private void initialize() {
-        System.out.println("FXML loaded successfully!");
         //Interliga cada TableColumn com os atributos do JogadorDTO
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -42,6 +42,7 @@ public class MainController {
         carregarJogadores();
     }
     @FXML
+    //atualiza os campos
     private void carregarJogadores() {
         JogadorDAO objJogadorDAO = new JogadorDAO();
         ArrayList<JogadorDTO> listaJogadores = objJogadorDAO.listarJogadores();
@@ -52,7 +53,6 @@ public class MainController {
     private void carregarCampos() {
         // Pega o jogador que foi selecionado na tabela
         JogadorDTO objJogadorDTO = tblVolei.getSelectionModel().getSelectedItem();
-
         // Se tiver linha selecionada - preenche
         if (objJogadorDTO != null) {
             txtId.setText(String.valueOf(objJogadorDTO.getId()));
@@ -62,6 +62,7 @@ public class MainController {
             txtTime.setText(objJogadorDTO.getTime());
         }
     }
+    //Empacota e grava no banco
     @FXML
     private void btnSalvarAction(ActionEvent event) {
         //Pega os textos
@@ -110,6 +111,7 @@ public class MainController {
         txtIdade.clear();
         txtPosicao.clear();
         txtTime.clear();
+        txtNome.requestFocus();// Garante o foco para o usuário continuar digitando via TAB
     }
     @FXML
     private void btnExcluirAction(ActionEvent event) {
