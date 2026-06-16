@@ -12,59 +12,53 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.MainController">
-    <children>
-        <Pane layoutY="1.0" prefHeight="404.0" prefWidth="600.0" style="-fx-background-color: #F2F4F4;">
-            <children>
-                <Button fx:id="btnSalvar" layoutX="268.0" layoutY="92.0" mnemonicParsing="false" onAction="#btnSalvarAction" prefHeight="31.0" prefWidth="182.0" style="-fx-background-color: #1A5276; -fx-background-radius: 8px; -fx-text-fill: white;" text="Salvar" />
-                <Button fx:id="btnEditar" layoutX="268.0" layoutY="129.0" mnemonicParsing="false" onAction="#btnEditarAction" prefHeight="31.0" prefWidth="182.0" style="-fx-background-color: #1A5276; -fx-background-radius: 8px; -fx-text-fill: white;" text="Editar" />
-                <Button fx:id="btnExcluir" layoutX="473.0" layoutY="129.0" mnemonicParsing="false" onAction="#btnExcluirAction" prefHeight="31.0" prefWidth="115.0" style="-fx-background-color: #E67E22; -fx-background-radius: 8px; -fx-text-fill: white;" text="Excluir" />
-                <Label fx:id="lblNome" layoutX="18.0" layoutY="17.0" text="Nome:">
-                    <font>
-                        <Font name="Segoe UI Semibold" size="13.0" />
-                    </font></Label>
-                <Label fx:id="lblIdade" layoutX="19.0" layoutY="58.0" text="Idade:">
-                    <font>
-                        <Font name="Segoe UI Semibold" size="13.0" />
-                    </font></Label>
-                <Label fx:id="lblPosicao" layoutX="13.0" layoutY="135.0" text="Posição:">
-                    <font>
-                        <Font name="Segoe UI Semibold" size="13.0" />
-                    </font></Label>
-                <Label fx:id="lblTime" layoutX="20.0" layoutY="98.0" text="Time: ">
-                    <font>
-                        <Font name="Segoe UI Semibold" size="13.0" />
-                    </font></Label>
-                <TextField fx:id="txtNome" layoutX="66.0" layoutY="13.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
-                <TextField fx:id="txtIdade" layoutX="66.0" layoutY="54.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
-                <TextField fx:id="txtPosicao" layoutX="66.0" layoutY="131.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
-                <TextField fx:id="txtTime" layoutX="66.0" layoutY="94.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
-                <TableView fx:id="tblVolei" layoutX="11.0" layoutY="178.0" onMouseClicked="#carregarCampos" prefHeight="212.0" prefWidth="579.0" style="-fx-background-radius: 8px; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #1A5276; -fx-text-background-color: #1A5276;">
-                    <columns>
-                        <TableColumn fx:id="colId" prefWidth="73.0" style="-fx-background-color: #E5E8E8;" text="ID" />
-                        <TableColumn fx:id="colNome" prefWidth="173.0" style="-fx-background-color: #E5E8E8;" text="Nome" />
-                        <TableColumn fx:id="colIdade" style="-fx-background-color: E5E8E8;" text="Idade" />
-                        <TableColumn fx:id="colPosicao" minWidth="4.0" prefWidth="115.0" style="-fx-background-color: #E5E8E8;" text="Posição" />
-                        <TableColumn fx:id="colTime" prefWidth="109.0" style="-fx-background-color: #E5E8E8;" text="Time" />
-                    </columns>
-                </TableView>
-                <Label fx:id="lblId" layoutX="268.0" layoutY="17.0" text="ID:">
-                    <font>
-                        <Font name="Segoe UI Semibold Italic" size="13.0" />
-                    </font></Label>
-                <TextField fx:id="txtId" disable="true" editable="false" layoutX="291.0" layoutY="13.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
-                <Button fx:id="btnLimpar" layoutX="268.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnLimparAction" prefHeight="31.0" prefWidth="182.0" style="-fx-background-color: #1A5276; -fx-background-radius: 8px; -fx-text-fill: white;" text="Limpar" />
-                <Label fx:id="lblMensagem" layoutX="478.0" layoutY="98.0" prefHeight="19.0" prefWidth="105.0">
-                    <font>
-                        <Font name="Segoe UI Semibold Italic" size="13.0" />
-                    </font>
-                </Label>
-
-                <ImageView fitHeight="77.0" fitWidth="115.0" layoutX="475.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@volei.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </Pane>
-    </children>
+   <children>
+      <Pane layoutY="1.0" prefHeight="404.0" prefWidth="600.0" style="-fx-background-color: #F2F4F4;">
+         <children>
+            <Button fx:id="btnSalvar" layoutX="268.0" layoutY="92.0" mnemonicParsing="false" onAction="#btnSalvarAction" prefHeight="31.0" prefWidth="182.0" style="-fx-background-color: #1A5276; -fx-background-radius: 8px; -fx-text-fill: white;" text="Salvar" />
+            <Button fx:id="btnEditar" layoutX="268.0" layoutY="129.0" mnemonicParsing="false" onAction="#btnEditarAction" prefHeight="31.0" prefWidth="182.0" style="-fx-background-color: #1A5276; -fx-background-radius: 8px; -fx-text-fill: white;" text="Editar" />
+            <Button fx:id="btnExcluir" layoutX="473.0" layoutY="129.0" mnemonicParsing="false" onAction="#btnExcluirAction" prefHeight="31.0" prefWidth="115.0" style="-fx-background-color: #E67E22; -fx-background-radius: 8px; -fx-text-fill: white;" text="Excluir" />
+            <Label fx:id="lblNome" layoutX="18.0" layoutY="17.0" text="Nome:">
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font></Label>
+            <Label fx:id="lblIdade" layoutX="19.0" layoutY="58.0" text="Idade:">
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font></Label>
+            <Label fx:id="lblPosicao" layoutX="13.0" layoutY="135.0" text="Posição:">
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font></Label>
+            <Label fx:id="lblTime" layoutX="20.0" layoutY="98.0" text="Time: ">
+               <font>
+                  <Font name="Segoe UI Semibold" size="13.0" />
+               </font></Label>
+            <TextField fx:id="txtNome" layoutX="66.0" layoutY="13.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
+            <TextField fx:id="txtIdade" layoutX="66.0" layoutY="54.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
+            <TextField fx:id="txtPosicao" layoutX="66.0" layoutY="131.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
+            <TextField fx:id="txtTime" layoutX="66.0" layoutY="94.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
+            <TableView fx:id="tblVolei" layoutX="11.0" layoutY="178.0" onMouseClicked="#carregarCampos" prefHeight="212.0" prefWidth="579.0" style="-fx-background-radius: 8px; -fx-border-radius: 8px; -fx-border-width: 2px; -fx-border-color: #1A5276; -fx-text-background-color: #1A5276;">
+              <columns>
+                <TableColumn fx:id="colId" prefWidth="73.0" style="-fx-background-color: #E5E8E8;" text="ID" />
+                <TableColumn fx:id="colNome" prefWidth="173.0" style="-fx-background-color: #E5E8E8;" text="Nome" />
+                  <TableColumn fx:id="colIdade" style="-fx-background-color: E5E8E8;" text="Idade" />
+                  <TableColumn fx:id="colPosicao" minWidth="4.0" prefWidth="115.0" style="-fx-background-color: #E5E8E8;" text="Posição" />
+                  <TableColumn fx:id="colTime" prefWidth="109.0" style="-fx-background-color: #E5E8E8;" text="Time" />
+              </columns>
+            </TableView>
+            <Label fx:id="lblId" layoutX="268.0" layoutY="17.0" text="ID:">
+               <font>
+                  <Font name="Segoe UI Semibold Italic" size="13.0" />
+               </font></Label>
+            <TextField fx:id="txtId" disable="true" editable="false" layoutX="291.0" layoutY="13.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
+            <Button fx:id="btnLimpar" layoutX="268.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnLimparAction" prefHeight="31.0" prefWidth="182.0" style="-fx-background-color: #1A5276; -fx-background-radius: 8px; -fx-text-fill: white;" text="Limpar" />
+            <ImageView fitHeight="107.0" fitWidth="115.0" layoutX="473.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@volei.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>

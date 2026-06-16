@@ -9,7 +9,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
-
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import java.util.Optional;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 public class MainController {
     //Texto
     @FXML private TextField txtId;
@@ -30,6 +34,8 @@ public class MainController {
     @FXML private TableColumn<JogadorDTO, Integer> colIdade;
     @FXML private TableColumn<JogadorDTO, String> colPosicao;
     @FXML private TableColumn<JogadorDTO, String> colTime;
+    @FXML private ImageView imgVolei;
+
 
     @FXML
     private void initialize() {
@@ -65,23 +71,33 @@ public class MainController {
     //Empacota e grava no banco
     @FXML
     private void btnSalvarAction(ActionEvent event) {
-        //Pega os textos
+
         String nome = txtNome.getText();
-        int idade = Integer.parseInt(txtIdade.getText());
+        String idadeTexto = txtIdade.getText();
+        int idade;
+        try {
+            idade = Integer.parseInt(idadeTexto);
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText(null);
+            alert.setContentText("Digite uma idade válida (apenas números).");
+            alert.showAndWait();
+            return;
+        }
         String posicao = txtPosicao.getText();
         String time = txtTime.getText();
-        //Instancia DTO
         JogadorDTO objJogadorDTO = new JogadorDTO();
         objJogadorDTO.setNome(nome);
         objJogadorDTO.setIdade(idade);
         objJogadorDTO.setPosicao(posicao);
         objJogadorDTO.setTime(time);
-        //Instancia DAO, chama o metodoinserir
+
         JogadorDAO objJogadorDAO = new JogadorDAO();
         objJogadorDAO.insertPlayer(objJogadorDTO);
 
-        //Recarrega a tabela p/ o jogador novo aparecer na hora
         carregarJogadores();
+        btnLimparAction(null);
     }
 
     @FXML
@@ -103,6 +119,7 @@ public class MainController {
         objJogadorDAO.updatePlayer(objJogadorDTO);
 
         carregarJogadores();
+        btnLimparAction(null);
     }
     @FXML
     private void btnLimparAction(ActionEvent event) {
@@ -117,10 +134,20 @@ public class MainController {
     private void btnExcluirAction(ActionEvent event) {
         int id = Integer.parseInt(txtId.getText());
 
-        JogadorDAO objJogadorDAO = new JogadorDAO();
-        objJogadorDAO.deletePlayer(id);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmação");
+        alert.setHeaderText("Excluir jogador");
+        alert.setContentText("Deseja realmente excluir este jogador?");
 
-        carregarJogadores();
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            JogadorDAO objJogadorDAO = new JogadorDAO();
+            objJogadorDAO.deletePlayer(id);
+
+            carregarJogadores();
+            btnLimparAction(null);
+        }
     }
 
 
