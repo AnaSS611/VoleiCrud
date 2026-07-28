@@ -1,4 +1,4 @@
-package com.template;
+package com.template.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +14,7 @@ public class JogadorDAO {
     private static final Logger logger = Logger.getLogger(JogadorDAO.class.getName());
 
     ArrayList<JogadorDTO> listaJogadores = new ArrayList<>();
+
     public ArrayList<JogadorDTO> listarJogadores() {
         String sql = "SELECT * FROM jogadores";
 

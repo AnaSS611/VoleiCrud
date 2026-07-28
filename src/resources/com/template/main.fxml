@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.template.controller.MainController">
    <children>
       <Pane layoutY="1.0" prefHeight="404.0" prefWidth="600.0" style="-fx-background-color: #F2F4F4;">
          <children>
@@ -53,7 +53,7 @@
                </font></Label>
             <TextField fx:id="txtId" disable="true" editable="false" layoutX="291.0" layoutY="13.0" style="-fx-background-color: #fff6ed; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #D5DBDB;" />
             <Button fx:id="btnLimpar" layoutX="268.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnLimparAction" prefHeight="31.0" prefWidth="182.0" style="-fx-background-color: #1A5276; -fx-background-radius: 8px; -fx-text-fill: white;" text="Limpar" />
-            <ImageView fitHeight="107.0" fitWidth="115.0" layoutX="473.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgVolei" fitHeight="102.0" fitWidth="115.0" layoutX="473.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@volei.png" />
                </image>

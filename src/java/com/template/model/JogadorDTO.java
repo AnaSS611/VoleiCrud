@@ -1,4 +1,4 @@
-package com.template;
+package com.template.model;
 
 /* Classe responsável pelo transporte de dados do jogador */
 public class JogadorDTO {
